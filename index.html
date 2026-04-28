@@ -2,23 +2,53 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>BLL Game Portal</title>
+    <title>BLL-corp | Главная</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>MIGHTY PIXEL GAMES</h1>
+    <header class="nav-bar">
+        <div class="nav-item">О сайте</div>
+        <div class="nav-item">КНОПКА</div>
+        <div class="nav-item">КНОПКА</div>
+        <div class="nav-item">КНОПКА</div>
+        <div class="nav-item right">Предложить игры</div>
     </header>
 
-    <nav class="game-grid">
-        <a href="games/mario.html" class="game-card">
-            <div class="pixel-icon">🍄</div>
-            <span>Super Mario Clone</span>
-        </a>
-        <a href="games/casino.html" class="game-card">
-            <div class="pixel-icon">🎰</div>
-            <span>Sinister Casino</span>
-        </a>
-    </nav>
+    <main class="content">
+        <div class="game-grid">
+            <a href="games/casino.html" class="game-square">
+                <div class="img-placeholder">🎰</div>
+                <div class="desc">КАЗИНО<br><span>Рискни всем</span></div>
+            </a>
+            <a href="games/tetris.html" class="game-square">
+                <div class="img-placeholder">🧱</div>
+                <div class="desc">ТЕТРИС<br><span>Упорядочи хаос</span></div>
+            </a>
+            <a href="games/minesweeper.html" class="game-square">
+                <div class="img-placeholder">💣</div>
+                <div class="desc">САПЕР<br><span>Не ошибись</span></div>
+            </a>
+            <a href="games/mario.html" class="game-square">
+                <div class="img-placeholder">🍄</div>
+                <div class="desc">МАРИО<br><span>Прыгай выше</span></div>
+            </a>
+            <a href="games/nyancat.html" class="game-square">
+                <div class="img-placeholder">🌈</div>
+                <div class="desc">НЯНКЭТ<br><span>Лети в космос</span></div>
+            </a>
+            <a href="games/solitaire.html" class="game-square">
+                <div class="img-placeholder">🃏</div>
+                <div class="desc">ПАСЬЯНС<br><span>Разложи карты</span></div>
+            </a>
+            <div class="game-square empty"></div>
+            <div class="game-square empty"></div>
+            <div class="game-square empty"></div>
+            <div class="game-square empty"></div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        Создано BLL-corp.
+    </footer>
 </body>
 </html>
