@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Pixel Casino</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <h1>🎰 ЛУДОМАНИЯ 🎰</h1>
+    <div id="slot-machine">
+        <div id="slots">
+            <span id="s1">?</span>
+            <span id="s2">?</span>
+            <span id="s3">?</span>
+        </div>
+        <button onclick="spin()">КРУТИТЬ!</button>
+        <p id="resultText">Удачи, путник...</p>
+    </div>
+
+    <script>
+        const symbols = ['🍎', '🍒', '💎', '7️⃣', '💀'];
+        function spin() {
+            const s1 = symbols[Math.floor(Math.random() * symbols.length)];
+            const s2 = symbols[Math.floor(Math.random() * symbols.length)];
+            const s3 = symbols[Math.floor(Math.random() * symbols.length)];
+
+            document.getElementById('s1').innerText = s1;
+            document.getElementById('s2').innerText = s2;
+            document.getElementById('s3').innerText = s3;
+
+            if (s1 === s2 && s2 === s3) {
+                document.getElementById('resultText').innerText = "ДЖЕКПОТ!";
+            } else {
+                document.getElementById('resultText').innerText = "Попробуй еще раз...";
+            }
+        }
+    </script>
+</body>
+</html>
