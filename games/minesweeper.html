@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BLL | Minesweeper</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        #board { display: grid; grid-template-columns: repeat(10, 30px); gap: 2px; background: #333; padding: 5px; margin: 20px auto; width: fit-content; }
+        .cell { width: 30px; height: 30px; background: #bbb; display: flex; align-items: center; justify-content: center; font-weight: bold; cursor: pointer; border: 2px outset #eee; }
+        .cell.open { background: #eee; border: 1px solid #999; }
+        .cell.mine { background: red; }
+    </style>
+</head>
+<body style="text-align:center;">
+    <h1>MINESWEEPER</h1>
+    <div id="board"></div>
+    <button onclick="init()">RESTART</button>
+    <script>
+        const size = 10;
+        const minesCount = 15;
+        let board = [];
+
+        function init() {
+            const boardEl = document.getElementById('board');
+            boardEl.innerHTML = '';
+            board = [];
+            for(let i=0; i<size*size; i++) {
+                const cell = { isMine: i < minesCount, isOpen: false, count: 0 };
+                board.push(cell);
+            }
+            board.sort(() => Math.random() - 0.5);
+
+            board.forEach((cell, i) => {
+                const el = document.createElement('div');
+                el.className = 'cell';
+                el.onclick = () => open(i);
+                boardEl.appendChild(el);
+            });
+        }
+
+        function open(i) {
+            if(board[i].isOpen) return;
+            board[i].isOpen = true;
+            const el = document.getElementsByClassName('cell')[i];
+            el.classList.add('open');
+            if(board[i].isMine) {
+                el.innerText = '💣';
+                alert('GAME OVER');
+                init();
+            }
+        }
+        init();
+    </script>
+</body>
+</html>
