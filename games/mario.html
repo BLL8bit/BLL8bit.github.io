@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BLL | Mario</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        canvas { background: #5c94fc; display: block; margin: 20px auto; border: 4px solid #000; }
+    </style>
+</head>
+<body>
+    <h1>SUPER BLL BROS</h1>
+    <canvas id="game" width="600" height="400"></canvas>
+    <script>
+        const canvas = document.getElementById('game');
+        const ctx = canvas.getContext('2d');
+        const player = { x: 50, y: 300, w: 30, h: 30, dy: 0, jump: -12, speed: 5, onGround: false };
+        const gravity = 0.6;
+        const keys = {};
+
+        function update() {
+            if (keys['ArrowLeft']) player.x -= player.speed;
+            if (keys['ArrowRight']) player.x += player.speed;
+            if (keys['ArrowUp'] && player.onGround) { player.dy = player.jump; player.onGround = false; }
+
+            player.dy += gravity;
+            player.y += player.dy;
+
+            if (player.y + player.h > 380) {
+                player.y = 380 - player.h;
+                player.dy = 0;
+                player.onGround = true;
+            }
+
+            ctx.clearRect(0,0,600,400);
+            ctx.fillStyle = '#ff4444'; // Наш красный Марио
+            ctx.fillRect(player.x, player.y, player.w, player.h);
+            ctx.fillStyle = '#4e3'; // Трава
+            ctx.fillRect(0, 380, 600, 20);
+            requestAnimationFrame(update);
+        }
+
+        window.addEventListener('keydown', e => keys[e.code] = true);
+        window.addEventListener('keyup', e => keys[e.code] = false);
+        update();
+    </script>
+</body>
+</html>
